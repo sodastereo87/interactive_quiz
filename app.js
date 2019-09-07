@@ -18,7 +18,19 @@ form.addEventListener('submit', e => {
     });
 
     // show result on page
-    result.querySelector('span').textContent= `${score}%`;
+    scrollTo(0, 0);
     result.classList.remove('d-none');
 
+    // score animation
+    let output = 0;
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent = `${output}%`;
+        if (output === score) {
+            clearInterval(timer);
+        } else {
+            output++;
+        }
+    }, 10);
 });
+
+// () => is the same than function()
